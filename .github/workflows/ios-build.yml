@@ -19,15 +19,15 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '2.7'
+        ruby-version: '2.7'  # Keep using Ruby 2.7
 
-    - name: Install compatible securerandom
-      run: gem install securerandom -v 0.3.2
+    - name: Install Bundler
+      run: gem install bundler
 
-    - name: Install CocoaPods
+    - name: Install dependencies
       run: |
-        gem install cocoapods
-        pod install --repo-update
+        bundle install
+        bundle exec pod install --repo-update
       working-directory: ios
 
     - name: Set up Xcode
